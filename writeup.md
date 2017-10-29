@@ -42,14 +42,24 @@ First converted the point cloud to voxel ( "voxel" is short for "volume element"
 Then applied the passthrough filter along z axis with a range of (0.6 to 1.1) to get only the tabletop with objects on it and remove the bottom of the table and it looks like below.
 ![Passthrough](https://github.com/perfalcon/RoboND-Perception-P2-Project/blob/master/images/passthrough-filter.png)
 
-Then used the RANSAC - Random sample consensus algorith  to get only the objects we are concerned on the table and remove the table top as well 
+Then used the RANSAC - Random sample consensus algorithm  to get only the objects we are concerned on the table and remove the table top as well 
 
 The RANSAC algorithm assumes that all of the data in a dataset is composed of both inliers and outliers, where inliers can be defined by a particular model with a specific set of parameters, while outliers do not fit that model and hence can be discarded. Like in the example below, we can extract the outliners that are not good fits for the model.
 ![RANSAC](https://github.com/perfalcon/RoboND-Perception-P2-Project/blob/master/images/ransac-img.png)
 
+After the RANSAC is applied it looks like this:
+![my-ransac](https://github.com/perfalcon/RoboND-Perception-P2-Project/blob/master/images/my-ransac.png)
+
 
 #### 2. Complete Exercise 2 steps: Pipeline including clustering for segmentation implemented.  
 
+In this exercise, now as we got the objects on the table top, we need to segment the point cloud to invidudal objects for this we use the Euclidean Clustering algorithm.
+This Euclidean clustering algorithm uses the k-d tree, to reduce the computational burden of searching for neighboring points.
+Inorder to get the k-d tree, we need to convert the XYZRGB point cloud to XYX as the PCL's Euclidean Clustering algorithm requires a point cloud with only spatial information ( for this used the functions from pcl_helper.py). Get the individual clusters by applying the cluster tolerance to 0.04 and cluster size range (50,2500).
+Inorder to visualize the cluster better assigned the a color to each individaul object cluster.
+Then published those pcl cluster by converting to ros's pointcloud2.
+
+![Ecludiean Clustering](https://github.com/perfalcon/RoboND-Perception-P2-Project/blob/master/images/ecludiean-cluster.PNG)
 
 
 
@@ -59,6 +69,10 @@ Here is an example of how to include an image in your writeup.
 ![demo-1](https://user-images.githubusercontent.com/20687560/28748231-46b5b912-7467-11e7-8778-3095172b7b19.png)
 
 ### Pick and Place Setup
+
+Noise Removal:
+https://classroom.udacity.com/nanodegrees/nd209/parts/586e8e81-fc68-4f71-9cab-98ccd4766cfe/modules/e5bfcfbd-3f7d-43fe-8248-0c65d910345a/lessons/8d51e0bf-0fa1-49a7-bd45-e062c4a2121f/concepts/fdb3a445-43e0-4a02-81e2-0448432c156f
+
 
 #### 1. For all three tabletop setups (`test*.world`), perform object recognition, then read in respective pick list (`pick_list_*.yaml`). Next construct the messages that would comprise a valid `PickPlace` request output them to `.yaml` format.
 
