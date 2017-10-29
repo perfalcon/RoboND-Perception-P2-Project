@@ -95,7 +95,7 @@ def pcl_callback(pcl_msg):
     # Finally use the filter function to obtain the resultant point cloud. 
     cloud_filtered = passthrough.filter()
 
-    #for horizontal
+    #for X-Axis
     passthrough = cloud_filtered.make_passthrough_filter()
     # Assign axis and range to the passthrough filter object.
     filter_axis = 'x'
@@ -107,7 +107,7 @@ def pcl_callback(pcl_msg):
     # Finally use the filter function to obtain the resultant point cloud. 
     cloud_filtered = passthrough.filter()
    
-  #for horizontal-y
+  #for Y-Axis
     passthrough = cloud_filtered.make_passthrough_filter()
     # Assign axis and range to the passthrough filter object.
     filter_axis = 'y'
