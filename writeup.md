@@ -35,6 +35,12 @@ This project is to detect the objects on the table, generate the instructions li
 ----STOPPED === 
 ### Exercise 1, 2 and 3 pipeline implemented
 #### 1. Complete Exercise 1 steps. Pipeline for filtering and RANSAC plane fitting implemented.
+First converted the point cloud to voxel with a size of 0.01 to get more points.
+Then applied the passthrough filter along z axis to get only the tabletop with objects on it and remove the bottom of the table.
+Then used the RANSAC - Random sample consensus algorith  to get only the objects we are concerned on the table and remove the table top as well 
+
+The RANSAC algorithm assumes that all of the data in a dataset is composed of both inliers and outliers, where inliers can be defined by a particular model with a specific set of parameters, while outliers do not fit that model and hence can be discarded. Like in the example below, we can extract the outliners that are not good fits for the model.
+![RANSAC](https://github.com/perfalcon/RoboND-Perception-P2-Project/blob/master/images/ransac-img.png)
 
 
 #### 2. Complete Exercise 2 steps: Pipeline including clustering for segmentation implemented.  
