@@ -110,6 +110,9 @@ The generated files are as below:
 
 3) [output_3.yaml](https://github.com/perfalcon/RoboND-Perception-P2-Project/blob/master/world3/output_3.yaml)
 
+The Python script for this project:
+
+[project script](https://github.com/perfalcon/RoboND-Perception-P2-Project/blob/master/scripts/project_template.py)
 
 ### Discuss the algorithms used in the code.
 
