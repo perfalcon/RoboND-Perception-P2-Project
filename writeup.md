@@ -105,7 +105,7 @@ Inorder to remove the edges of the boxes from the view of the pr2-robot camera, 
 
 | Before x,y passthrough filter   |   After  x,y passthrough filter      |
 |---------------------------------|:------------------------------------:|
-| ![Before filter applied ](https://github.com/perfalcon/RoboND-Perception-P2-Project/blob/master/images/pr-run2.PNG)| ![After filter applied ](https://github.com/perfalcon/RoboND-Perception-P2-Project/blob/master/images/pr-run3.PNG) |
+| ![Before filter applied ](https://github.com/perfalcon/RoboND-Perception-P2-Project/blob/master/images/pr-run2.PNG)| ![After filter applied ](https://github.com/perfalcon/RoboND-Perception-P2-Project/blob/master/images/pr3-run.PNG) |
 
 
 
