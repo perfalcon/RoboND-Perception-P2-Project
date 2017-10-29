@@ -167,7 +167,7 @@ As a result following steps are applied to get the output instructions for robot
       Then pass the pick position, object name, the arm to be used, the place postion  to function to generate the instructions in .yaml file and save the file .
       
  
- Picture of World1, 2 and 3 objects after the detection:
+ Pictures of World 1, 2 and 3 objects after the detection:
  
 | World 1  |   World 2    | World 3   |
 |----------|:------------:|-----------|
