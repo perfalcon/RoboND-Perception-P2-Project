@@ -93,7 +93,7 @@ Refer to the code in this python script :
 
 
 ### Pick and Place Setup
-Followed the instructions specified in this lesson:
+Followed the instructions specified in this lesson for setting up the environment:
 https://classroom.udacity.com/nanodegrees/nd209/parts/586e8e81-fc68-4f71-9cab-98ccd4766cfe/modules/e5bfcfbd-3f7d-43fe-8248-0c65d910345a/lessons/e3e5fd8e-2f76-4169-a5bc-5a128d380155/concepts/474ba039-cc5c-4fa0-b8d6-3f5173abe513
 
 #### 1. For all three tabletop setups (`test*.world`), perform object recognition, then read in respective pick list (`pick_list_*.yaml`). Next construct the messages that would comprise a valid `PickPlace` request output them to `.yaml` format.
@@ -109,9 +109,8 @@ The generated files are as below:
 3) [output_3.yaml](https://github.com/perfalcon/RoboND-Perception-P2-Project/blob/master/world3/output_3.yaml)
 
 
-*** 
-Spend some time at the end to discuss your code, what techniques you used, what worked and why, where the implementation might fail and how you might improve it if you were going to pursue this project further.  
-***
+*** Discuss the algorithms used in the code.
+
 I faced with noise and the side edges of the boxes in the view of the robot, which were causing problem to detect the exact number of objects from the table.
 
 **noise 
@@ -131,3 +130,43 @@ Inorder to remove the edges of the boxes from the view of the pr2-robot camera, 
 
 Refer to the section in [project script](https://github.com/perfalcon/RoboND-Perception-P2-Project/blob/master/scripts/project_template.py) :   PassThrough Filter - #for X-Axis, #for Y-Axis  
 
+As a result following steps are applied to get the output instructions for robot to pick and place the objects in the boxes.
+1) Convert ros messages to pcl
+
+2) Apply the Statistical outlier filter to remove the noise
+
+3) Apply the Voxel Grid Downsampling to get the accurate volume points to detect the objects
+
+4) Apply the Passthrough filters 
+
+    i) Along Z - Axis to get the Table with Objects and remove the bottom of the table with a rangle of 0.6 to 0.8.
+    
+    ii) Along X - Axis with a range of 0.3 to 1.0 and Y - Axis to get the with a range of -0.5 to 0.5
+
+5) Applied the RANSAC - Random sample consensus algorithm  to get only the objects we are concerned on the table and remove the table top as well
+
+6) Extract the inliers ( the objects) and the outliers (the table top)
+
+7) Apply the Euclidean Clustering algorithm Get the individual clusters by applying the cluster tolerance to 0.04 and cluster size range (50,2500).
+
+8) Apply the colours to the invidivual cluster to have a better visual.
+
+9) Prediction:
+   Inorder to predict the object in the scene, we need to train the system, here the captured the different features of the expected objects with Histograms using hsv colors and surface normals to get the shape of the objects from the cluster.
+   Then used the SVM algorithm, which allows to characterize the parameter space of the dataset into discrete classes (refer to train_svm.py)
+   As a result we get the trained dataset, which is passed to the prediction algorigthm to match the objects in the scene and label them with the approriate names and publish.
+   
+ 10) Pass the detected objects to the pr2_mover function where it will generate the instructions(output_*.yaml) for the robot to pick and place the object as expected.
+ 
+ 11) pr2_mover:
+    For each detected objects:
+      match the object's  label with the pick_list from parameter server, if matched take the group ( red/blue) which denote in which box the object has to be dropped, then match the group with dropbox_lot from paramter server to get the exact positions of the destination box and which arm to be used, at the same time, get the location(pick_position) of the object from the table from the object's point cloud.
+      
+      Then pass the pick position, object name, the arm to be used, the place postion  to function to generate the instructions in .yaml file and save the file .
+      
+ 
+**Improvement:
+  
+  1) I need to improve the ranges in the algorithm to detect the exact numbers in the world 3.
+  2) I want to complete the next challenge of pick and place in the boxes after all the projects are done.
+  
