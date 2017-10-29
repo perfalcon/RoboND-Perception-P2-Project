@@ -93,9 +93,8 @@ Refer to the code in this python script :
 
 
 ### Pick and Place Setup
-
-Noise Removal:
-https://classroom.udacity.com/nanodegrees/nd209/parts/586e8e81-fc68-4f71-9cab-98ccd4766cfe/modules/e5bfcfbd-3f7d-43fe-8248-0c65d910345a/lessons/8d51e0bf-0fa1-49a7-bd45-e062c4a2121f/concepts/fdb3a445-43e0-4a02-81e2-0448432c156f
+Followed the instructions specified in this lesson:
+https://classroom.udacity.com/nanodegrees/nd209/parts/586e8e81-fc68-4f71-9cab-98ccd4766cfe/modules/e5bfcfbd-3f7d-43fe-8248-0c65d910345a/lessons/e3e5fd8e-2f76-4169-a5bc-5a128d380155/concepts/474ba039-cc5c-4fa0-b8d6-3f5173abe513
 
 #### 1. For all three tabletop setups (`test*.world`), perform object recognition, then read in respective pick list (`pick_list_*.yaml`). Next construct the messages that would comprise a valid `PickPlace` request output them to `.yaml` format.
 
@@ -110,7 +109,18 @@ The generated files are as below:
 3) [output_3.yaml](https://github.com/perfalcon/RoboND-Perception-P2-Project/blob/master/world3/output_3.yaml)
 
 
-Inorder to remove the noise from the point cloud, applied the StatisticalOutlierRemoval filter 
+*** 
+Spend some time at the end to discuss your code, what techniques you used, what worked and why, where the implementation might fail and how you might improve it if you were going to pursue this project further.  
+***
+I faced with noise and the side edges of the boxes in the view of the robot, which were causing problem to detect the exact number of objects from the table.
+
+**noise 
+
+Inorder to remove the noise from the point cloud, applied the StatisticalOutlierRemoval filter  with a mean of 1 and standard deviation of 1.
+
+Refer to the section in project.py :   Statistical Outlier Filtering  
+
+**Box edges
 
 Inorder to remove the edges of the boxes from the view of the pr2-robot camera, applied the passthrough filter along z axis, then x axis and then y axis. By this process, the robot was able to find the exact number of objects on the table and below are screen shots.
 
@@ -119,13 +129,5 @@ Inorder to remove the edges of the boxes from the view of the pr2-robot camera, 
 | ![Before filter applied ](https://github.com/perfalcon/RoboND-Perception-P2-Project/blob/master/images/pr-run2.PNG)| ![After filter applied ](https://github.com/perfalcon/RoboND-Perception-P2-Project/blob/master/images/pr3-run.PNG) |
 
 
-
-
-
-And here's another image! 
-![demo-2](https://user-images.githubusercontent.com/20687560/28748286-9f65680e-7468-11e7-83dc-f1a32380b89c.png)
-
-Spend some time at the end to discuss your code, what techniques you used, what worked and why, where the implementation might fail and how you might improve it if you were going to pursue this project further.  
-
-
+Refer to the section in project.py :   PassThrough Filter - #for X-Axis, #for Y-Axis  
 
