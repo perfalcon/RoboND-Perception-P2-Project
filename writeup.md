@@ -118,7 +118,7 @@ I faced with noise and the side edges of the boxes in the view of the robot, whi
 
 Inorder to remove the noise from the point cloud, applied the StatisticalOutlierRemoval filter  with a mean of 1 and standard deviation of 1.
 
-Refer to the section in project.py :   Statistical Outlier Filtering  
+Refer to the section in [project script](https://github.com/perfalcon/RoboND-Perception-P2-Project/blob/master/scripts/project_template.py) :   Statistical Outlier Filtering  
 
 **Box edges
 
@@ -129,5 +129,5 @@ Inorder to remove the edges of the boxes from the view of the pr2-robot camera, 
 | ![Before filter applied ](https://github.com/perfalcon/RoboND-Perception-P2-Project/blob/master/images/pr-run2.PNG)| ![After filter applied ](https://github.com/perfalcon/RoboND-Perception-P2-Project/blob/master/images/pr3-run.PNG) |
 
 
-Refer to the section in project.py :   PassThrough Filter - #for X-Axis, #for Y-Axis  
+Refer to the section in [project script](https://github.com/perfalcon/RoboND-Perception-P2-Project/blob/master/scripts/project_template.py) :   PassThrough Filter - #for X-Axis, #for Y-Axis  
 
