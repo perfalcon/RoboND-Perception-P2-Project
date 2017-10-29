@@ -99,13 +99,26 @@ https://classroom.udacity.com/nanodegrees/nd209/parts/586e8e81-fc68-4f71-9cab-98
 
 #### 1. For all three tabletop setups (`test*.world`), perform object recognition, then read in respective pick list (`pick_list_*.yaml`). Next construct the messages that would comprise a valid `PickPlace` request output them to `.yaml` format.
 
-To get the output_*.yaml for three worlds, applied all the functions created in the Exercise-1, Exercise-2, Exerise-3, followed the same of process training the three world objects.
+To get the output_*.yaml for three worlds, applied all the functions created in the Exercise-1, Exercise-2, Exerise-3, followed the same  process for training the three world objects then by matching the detected objects  with the paramter servers information from picklist and dropbox list to get the exact location in which box to drop and for that what arm should be moved.
 
-Inorder to remove the edges of the boxes from the view of the pr2-robot camera, applied the passthrough filter along z axis, then x axis and then y axis. By this the robot was able to find the exact number of objects on the table.
+The generated files are as below:
+
+1) [output_1.yaml](https://github.com/perfalcon/RoboND-Perception-P2-Project/blob/master/world1/output_1.yaml)
+
+2) [output_2yaml](https://github.com/perfalcon/RoboND-Perception-P2-Project/blob/master/world1/output_2.yaml)
+
+3) [output_3yaml](https://github.com/perfalcon/RoboND-Perception-P2-Project/blob/master/world1/output_3.yaml)
+
+
+Inorder to remove the noise from the point cloud, applied the StatisticalOutlierRemoval filter 
+
+Inorder to remove the edges of the boxes from the view of the pr2-robot camera, applied the passthrough filter along z axis, then x axis and then y axis. By this process, the robot was able to find the exact number of objects on the table and below are screen shots.
 
 | Before x,y passthrough filter   |   After  x,y passthrough filter      |
 |---------------------------------|:------------------------------------:|
 | ![Before filter applied ](https://github.com/perfalcon/RoboND-Perception-P2-Project/blob/master/images/pr-run2.PNG)| ![After filter applied ](https://github.com/perfalcon/RoboND-Perception-P2-Project/blob/master/images/pr3-run.PNG) |
+
+
 
 
 
