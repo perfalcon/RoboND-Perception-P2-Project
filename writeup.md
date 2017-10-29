@@ -32,7 +32,7 @@
 
 #### 1. Provide a Writeup / README that includes all the rubric points and how you addressed each one.  You can submit your writeup as markdown or pdf.  
 This project is to detect the objects on the table, generate the instructions like which box it has to be dropped, and the position of the box for three different world scenarios in the specified order.
-----STOPPED === 
+
 ### Exercise 1, 2 and 3 pipeline implemented
 #### 1. Complete Exercise 1 steps. Pipeline for filtering and RANSAC plane fitting implemented.
 First converted the point cloud to voxel ( "voxel" is short for "volume element") with a size of 0.01 to get more points.
@@ -82,7 +82,7 @@ It looks like this:
 ![Object Recognition](https://github.com/perfalcon/RoboND-Perception-P2-Project/blob/master/images/final-object-recog-svm.PNG)
 
 
-
+----STOPPED === 
 ### Pick and Place Setup
 
 Noise Removal:
