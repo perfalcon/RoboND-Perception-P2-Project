@@ -50,6 +50,8 @@ The RANSAC algorithm assumes that all of the data in a dataset is composed of bo
 After the RANSAC is applied it looks like this:
 ![my-ransac](https://github.com/perfalcon/RoboND-Perception-P2-Project/blob/master/images/my-ransac.png)
 
+Refer to the code in this python script : [RANSAC-Exercise-Solution](https://github.com/perfalcon/RoboND-Perception-P2-Project/blob/master/scripts/RANSAC.py)
+
 
 #### 2. Complete Exercise 2 steps: Pipeline including clustering for segmentation implemented.  
 
@@ -66,9 +68,9 @@ Then published those pcl cluster by converting to ros's pointcloud2 and it looks
 
 ![Ecludiean Clustering](https://github.com/perfalcon/RoboND-Perception-P2-Project/blob/master/images/ecludiean-cluster.PNG)
 
+Refer to the code in this python script : [Segmentation-Exercise2-Solution](https://github.com/perfalcon/RoboND-Perception-P2-Project/blob/master/scripts/segmentation.py)
 
-
-#### 2. Complete Exercise 3 Steps.  Features extracted and SVM trained.  Object recognition implemented.
+#### 3. Complete Exercise 3 Steps.  Features extracted and SVM trained.  Object recognition implemented.
 
 In this exercise, we need to recognize each object and label them.
 We use the following algorithms to get the object.
@@ -80,6 +82,11 @@ After this we can use the trained dataset to recognize the objects in our scene.
 It looks like this:
 
 ![Object Recognition](https://github.com/perfalcon/RoboND-Perception-P2-Project/blob/master/images/final-object-recog-svm.PNG)
+
+Refer to the code in this python script : 
+[Features](https://github.com/perfalcon/RoboND-Perception-P2-Project/blob/master/scripts/features.py)
+[Capture Features](https://github.com/perfalcon/RoboND-Perception-P2-Project/blob/master/scripts/capture_features.py)
+[Object Recognition-Exercise3-Solution](https://github.com/perfalcon/RoboND-Perception-P2-Project/blob/master/scripts/object_recognition.py)
 
 
 ----STOPPED === 
