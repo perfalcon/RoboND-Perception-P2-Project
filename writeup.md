@@ -66,36 +66,38 @@ Refer to the code in this python script :
 
 ### Pick and Place Setup
 
-Steps:
+## Steps:
 
-  $ mkdir -p ~/catkin_ws/src
-  $ cd ~/catkin_ws/
-  $ catkin_make
+    $ mkdir -p ~/catkin_ws/src
+    $ cd ~/catkin_ws/
+    $ catkin_make
 
-Get the Project Frame work from github:
+ Get the Project Frame work from github:
 
-  $ cd ~/catkin_ws/src  
-  $ git clone https://github.com/udacity/RoboND-Perception-Project.git
+      $ cd ~/catkin_ws/src  
+      $ git clone https://github.com/udacity/RoboND-Perception-Project.git
 
 Next install missing dependencies using rosdep install:
 
-  $ cd ~/catkin_ws
-  $ rosdep install --from-paths src --ignore-src --rosdistro=kinetic -y
-  
+    $ cd ~/catkin_ws
+    $ rosdep install --from-paths src --ignore-src --rosdistro=kinetic -y
+
 Build the project:
 
-  $ cd ~/catkin_ws
-  $ catkin_make
+    $ cd ~/catkin_ws
+    $ catkin_make
 
 Add the following line to your .bashrc file:
 
-  export GAZEBO_MODEL_PATH=~/catkin_ws/src/RoboND-Perception-Project/pr2_robot/models:$GAZEBO_MODEL_PATH
+    export GAZEBO_MODEL_PATH=~/catkin_ws/src/RoboND-Perception-Project/pr2_robot/models:$GAZEBO_MODEL_PATH
   
 After coding to verify the code do the following steps:
  
-  $ roslaunch pr2_robot pick_place_project.launch
- 
-  $ rosrun pr2_robot project_template.py
+    $ roslaunch pr2_robot pick_place_project.launch
+
+    $ rosrun pr2_robot project_template.py
+    
+    
 #### 1. For all three tabletop setups (`test*.world`), perform object recognition, then read in respective pick list (`pick_list_*.yaml`). Next construct the messages that would comprise a valid `PickPlace` request output them to `.yaml` format.
 
 To get the output_*.yaml for three worlds, applied all the functions created in the Exercise-1, Exercise-2, Exerise-3, followed the same  process for training objects in three worlds, then created the output instructions by matching the detected objects  with the paramter servers information from picklist and dropbox list to get the exact location in which box to drop and what arm should be moved.
@@ -109,17 +111,17 @@ The generated files are as below:
 3) [output_3.yaml](https://github.com/perfalcon/RoboND-Perception-P2-Project/blob/master/world3/output_3.yaml)
 
 
-*** Discuss the algorithms used in the code.
+### Discuss the algorithms used in the code.
 
 I faced with noise and the side edges of the boxes in the view of the robot, which were causing problem to detect the exact number of objects from the table.
 
-*** noise 
+## Noise 
 
 Inorder to remove the noise from the point cloud, applied the StatisticalOutlierRemoval filter  with a mean of 1 and standard deviation of 1.
 
 Refer to the section in [project script](https://github.com/perfalcon/RoboND-Perception-P2-Project/blob/master/scripts/project_template.py) :   Statistical Outlier Filtering  
 
-*** Box edges
+## Box edges
 
 Inorder to remove the edges of the boxes from the view of the pr2-robot camera, applied the passthrough filter along z axis, then x axis and then y axis. By this process, the robot was able to find the exact number of objects on the table and below are screen shots.
 
@@ -165,7 +167,7 @@ As a result following steps are applied to get the output instructions for robot
       Then pass the pick position, object name, the arm to be used, the place postion  to function to generate the instructions in .yaml file and save the file .
       
  
-*** Improvement:
+### Improvement:
   
   1) I need to improve the ranges in the algorithm to detect the exact numbers in the world 3.
   2) I want to complete the next challenge of pick and place in the boxes after all the projects are done.
