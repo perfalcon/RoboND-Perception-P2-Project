@@ -54,19 +54,34 @@ After the RANSAC is applied it looks like this:
 #### 2. Complete Exercise 2 steps: Pipeline including clustering for segmentation implemented.  
 
 In this exercise, now as we got the objects on the table top, we need to segment the point cloud to invidudal objects for this we use the Euclidean Clustering algorithm.
+
 This Euclidean clustering algorithm uses the k-d tree, to reduce the computational burden of searching for neighboring points.
-Inorder to get the k-d tree, we need to convert the XYZRGB point cloud to XYX as the PCL's Euclidean Clustering algorithm requires a point cloud with only spatial information ( for this used the functions from pcl_helper.py). Get the individual clusters by applying the cluster tolerance to 0.04 and cluster size range (50,2500).
-Inorder to visualize the cluster better assigned the a color to each individaul object cluster.
-Then published those pcl cluster by converting to ros's pointcloud2.
+Inorder to get the k-d tree, we need to convert the XYZRGB point cloud to XYX as the PCL's Euclidean Clustering algorithm requires a point cloud with only spatial information ( for this used the functions from pcl_helper.py). 
+
+Get the individual clusters by applying the cluster tolerance to 0.04 and cluster size range (50,2500).
+
+Inorder to visualize the cluster better assigned a color to each individaul object cluster.
+
+Then published those pcl cluster by converting to ros's pointcloud2 and it looks like this:
 
 ![Ecludiean Clustering](https://github.com/perfalcon/RoboND-Perception-P2-Project/blob/master/images/ecludiean-cluster.PNG)
 
 
 
 #### 2. Complete Exercise 3 Steps.  Features extracted and SVM trained.  Object recognition implemented.
-Here is an example of how to include an image in your writeup.
 
-![demo-1](https://user-images.githubusercontent.com/20687560/28748231-46b5b912-7467-11e7-8778-3095172b7b19.png)
+In this exercise, we need to recognize each object and label them.
+We use the following algorithms to get the object.
+1) Apply the historgram using the  hsv color to get the exact object points
+2) Then apply the Surface Normals to get the exact shape of the objects.
+3) Then apply the Support Vector Machine or "SVM" a supervised machine learning algorithm that allows to characterize the parameter space of the dataset into discrete classes
+Utilized the Scikit-Learn/sklearn package in Python for the SVM.
+After this we can use the trained dataset to recognize the objects in our scene.
+It looks like this:
+
+![Object Recognition](https://github.com/perfalcon/RoboND-Perception-P2-Project/blob/master/images/final-object-recog-svm.PNG)
+
+
 
 ### Pick and Place Setup
 
