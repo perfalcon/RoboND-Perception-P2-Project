@@ -1,33 +1,5 @@
 ## Project: Perception Pick & Place
-### Writeup Template: You can use this file as a template for your writeup if you want to submit it as a markdown file, but feel free to use some other method and submit a pdf if you prefer.
 
----
-
-
-# Required Steps for a Passing Submission:
-1. Extract features and train an SVM model on new objects (see `pick_list_*.yaml` in `/pr2_robot/config/` for the list of models you'll be trying to identify). 
-2. Write a ROS node and subscribe to `/pr2/world/points` topic. This topic contains noisy point cloud data that you must work with.
-3. Use filtering and RANSAC plane fitting to isolate the objects of interest from the rest of the scene.
-4. Apply Euclidean clustering to create separate clusters for individual items.
-5. Perform object recognition on these objects and assign them labels (markers in RViz).
-6. Calculate the centroid (average in x, y and z) of the set of points belonging to that each object.
-7. Create ROS messages containing the details of each object (name, pick_pose, etc.) and write these messages out to `.yaml` files, one for each of the 3 scenarios (`test1-3.world` in `/pr2_robot/worlds/`).  [See the example `output.yaml` for details on what the output should look like.](https://github.com/udacity/RoboND-Perception-Project/blob/master/pr2_robot/config/output.yaml)  
-8. Submit a link to your GitHub repo for the project or the Python code for your perception pipeline and your output `.yaml` files (3 `.yaml` files, one for each test world).  You must have correctly identified 100% of objects from `pick_list_1.yaml` for `test1.world`, 80% of items from `pick_list_2.yaml` for `test2.world` and 75% of items from `pick_list_3.yaml` in `test3.world`.
-9. Congratulations!  Your Done!
-
-# Extra Challenges: Complete the Pick & Place
-7. To create a collision map, publish a point cloud to the `/pr2/3d_map/points` topic and make sure you change the `point_cloud_topic` to `/pr2/3d_map/points` in `sensors.yaml` in the `/pr2_robot/config/` directory. This topic is read by Moveit!, which uses this point cloud input to generate a collision map, allowing the robot to plan its trajectory.  Keep in mind that later when you go to pick up an object, you must first remove it from this point cloud so it is removed from the collision map!
-8. Rotate the robot to generate collision map of table sides. This can be accomplished by publishing joint angle value(in radians) to `/pr2/world_joint_controller/command`
-9. Rotate the robot back to its original state.
-10. Create a ROS Client for the “pick_place_routine” rosservice.  In the required steps above, you already created the messages you need to use this service. Checkout the [PickPlace.srv](https://github.com/udacity/RoboND-Perception-Project/tree/master/pr2_robot/srv) file to find out what arguments you must pass to this service.
-11. If everything was done correctly, when you pass the appropriate messages to the `pick_place_routine` service, the selected arm will perform pick and place operation and display trajectory in the RViz window
-12. Place all the objects from your pick list in their respective dropoff box and you have completed the challenge!
-13. Looking for a bigger challenge?  Load up the `challenge.world` scenario and see if you can get your perception pipeline working there!
-
-## [Rubric](https://review.udacity.com/#!/rubrics/1067/view) Points
-### Here I will consider the rubric points individually and describe how I addressed each point in my implementation.  
-
----
 ### Writeup / README
 
 #### 1. Provide a Writeup / README that includes all the rubric points and how you addressed each one.  You can submit your writeup as markdown or pdf.  
@@ -93,9 +65,37 @@ Refer to the code in this python script :
 
 
 ### Pick and Place Setup
-Followed the instructions specified in this lesson for setting up the environment:
-https://classroom.udacity.com/nanodegrees/nd209/parts/586e8e81-fc68-4f71-9cab-98ccd4766cfe/modules/e5bfcfbd-3f7d-43fe-8248-0c65d910345a/lessons/e3e5fd8e-2f76-4169-a5bc-5a128d380155/concepts/474ba039-cc5c-4fa0-b8d6-3f5173abe513
 
+Steps:
+
+  $ mkdir -p ~/catkin_ws/src
+  $ cd ~/catkin_ws/
+  $ catkin_make
+
+Get the Project Frame work from github:
+
+  $ cd ~/catkin_ws/src  
+  $ git clone https://github.com/udacity/RoboND-Perception-Project.git
+
+Next install missing dependencies using rosdep install:
+
+  $ cd ~/catkin_ws
+  $ rosdep install --from-paths src --ignore-src --rosdistro=kinetic -y
+  
+Build the project:
+
+  $ cd ~/catkin_ws
+  $ catkin_make
+
+Add the following line to your .bashrc file:
+
+  export GAZEBO_MODEL_PATH=~/catkin_ws/src/RoboND-Perception-Project/pr2_robot/models:$GAZEBO_MODEL_PATH
+  
+After coding to verify the code do the following steps:
+ 
+  $ roslaunch pr2_robot pick_place_project.launch
+ 
+  $ rosrun pr2_robot project_template.py
 #### 1. For all three tabletop setups (`test*.world`), perform object recognition, then read in respective pick list (`pick_list_*.yaml`). Next construct the messages that would comprise a valid `PickPlace` request output them to `.yaml` format.
 
 To get the output_*.yaml for three worlds, applied all the functions created in the Exercise-1, Exercise-2, Exerise-3, followed the same  process for training objects in three worlds, then created the output instructions by matching the detected objects  with the paramter servers information from picklist and dropbox list to get the exact location in which box to drop and what arm should be moved.
@@ -113,13 +113,13 @@ The generated files are as below:
 
 I faced with noise and the side edges of the boxes in the view of the robot, which were causing problem to detect the exact number of objects from the table.
 
-**noise 
+*** noise 
 
 Inorder to remove the noise from the point cloud, applied the StatisticalOutlierRemoval filter  with a mean of 1 and standard deviation of 1.
 
 Refer to the section in [project script](https://github.com/perfalcon/RoboND-Perception-P2-Project/blob/master/scripts/project_template.py) :   Statistical Outlier Filtering  
 
-**Box edges
+*** Box edges
 
 Inorder to remove the edges of the boxes from the view of the pr2-robot camera, applied the passthrough filter along z axis, then x axis and then y axis. By this process, the robot was able to find the exact number of objects on the table and below are screen shots.
 
@@ -165,7 +165,7 @@ As a result following steps are applied to get the output instructions for robot
       Then pass the pick position, object name, the arm to be used, the place postion  to function to generate the instructions in .yaml file and save the file .
       
  
-**Improvement:
+*** Improvement:
   
   1) I need to improve the ranges in the algorithm to detect the exact numbers in the world 3.
   2) I want to complete the next challenge of pick and place in the boxes after all the projects are done.
