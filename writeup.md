@@ -167,6 +167,14 @@ As a result following steps are applied to get the output instructions for robot
       Then pass the pick position, object name, the arm to be used, the place postion  to function to generate the instructions in .yaml file and save the file .
       
  
+ Picture of World1, 2 and 3 objects after the detection:
+ 
+| World 1  |   World 2    | World 3   |
+|----------|:------------:|-----------|
+| ![World 1 ](https://github.com/perfalcon/RoboND-Perception-P2-Project/blob/master/images/pr3-run.PNG) | ![World 2](https://github.com/perfalcon/RoboND-Perception-P2-Project/blob/master/images/world2-objects.PNG) | ![World 3](https://github.com/perfalcon/RoboND-Perception-P2-Project/blob/master/images/world3-objects.PNG) |
+ 
+ 
+ 
 ### Improvement:
   
   1) I need to improve the ranges in the algorithm to detect the exact numbers in the world 3.
