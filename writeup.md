@@ -105,9 +105,9 @@ The generated files are as below:
 
 1) [output_1.yaml](https://github.com/perfalcon/RoboND-Perception-P2-Project/blob/master/world1/output_1.yaml)
 
-2) [output_2yaml](https://github.com/perfalcon/RoboND-Perception-P2-Project/blob/master/world1/output_2.yaml)
+2) [output_2.yaml](https://github.com/perfalcon/RoboND-Perception-P2-Project/blob/master/world2/output_2.yaml)
 
-3) [output_3yaml](https://github.com/perfalcon/RoboND-Perception-P2-Project/blob/master/world1/output_3.yaml)
+3) [output_3.yaml](https://github.com/perfalcon/RoboND-Perception-P2-Project/blob/master/world3/output_3.yaml)
 
 
 Inorder to remove the noise from the point cloud, applied the StatisticalOutlierRemoval filter 
