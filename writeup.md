@@ -83,10 +83,13 @@ It looks like this:
 
 ![Object Recognition](https://github.com/perfalcon/RoboND-Perception-P2-Project/blob/master/images/final-object-recog-svm.PNG)
 
-Refer to the code in this python script : 
-[Features](https://github.com/perfalcon/RoboND-Perception-P2-Project/blob/master/scripts/features.py)
-[Capture Features](https://github.com/perfalcon/RoboND-Perception-P2-Project/blob/master/scripts/capture_features.py)
-[Object Recognition-Exercise3-Solution](https://github.com/perfalcon/RoboND-Perception-P2-Project/blob/master/scripts/object_recognition.py)
+Refer to the code in this python script :
+
+  [Features](https://github.com/perfalcon/RoboND-Perception-P2-Project/blob/master/scripts/features.py)
+
+  [Capture Features](https://github.com/perfalcon/RoboND-Perception-P2-Project/blob/master/scripts/capture_features.py)
+
+  [Object Recognition-Exercise3-Solution](https://github.com/perfalcon/RoboND-Perception-P2-Project/blob/master/scripts/object_recognition.py)
 
 
 ----STOPPED === 
