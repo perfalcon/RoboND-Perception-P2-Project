@@ -92,14 +92,22 @@ Refer to the code in this python script :
   [Object Recognition-Exercise3-Solution](https://github.com/perfalcon/RoboND-Perception-P2-Project/blob/master/scripts/object_recognition.py)
 
 
-----STOPPED === 
 ### Pick and Place Setup
 
 Noise Removal:
 https://classroom.udacity.com/nanodegrees/nd209/parts/586e8e81-fc68-4f71-9cab-98ccd4766cfe/modules/e5bfcfbd-3f7d-43fe-8248-0c65d910345a/lessons/8d51e0bf-0fa1-49a7-bd45-e062c4a2121f/concepts/fdb3a445-43e0-4a02-81e2-0448432c156f
 
-
 #### 1. For all three tabletop setups (`test*.world`), perform object recognition, then read in respective pick list (`pick_list_*.yaml`). Next construct the messages that would comprise a valid `PickPlace` request output them to `.yaml` format.
+
+To get the output_*.yaml for three worlds, applied all the functions created in the Exercise-1, Exercise-2, Exerise-3, followed the same of process training the three world objects.
+
+Inorder to remove the edges of the boxes from the view of the pr2-robot camera, applied the passthrough filter along z axis, then x axis and then y axis. By this the robot was able to find the exact number of objects on the table.
+
+| Before x,y passthrough filter   |   After  x,y passthrough filter      |
+|---------------------------------|:------------------------------------:|
+| ![Before filter applied ](https://github.com/perfalcon/RoboND-Perception-P2-Project/blob/master/images/pr-run2.PNG)| ![After filter applied ](https://github.com/perfalcon/RoboND-Perception-P2-Project/blob/master/images/pr-run3.PNG) |
+
+
 
 And here's another image! 
 ![demo-2](https://user-images.githubusercontent.com/20687560/28748286-9f65680e-7468-11e7-83dc-f1a32380b89c.png)
